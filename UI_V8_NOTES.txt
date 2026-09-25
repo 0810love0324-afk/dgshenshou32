@@ -1,0 +1,8 @@
+V8 UI update
+- Restores the user's original DG lion logo style; the incomplete main wording is repaired using the original complete DG神手 lettering from the original horizontal logo asset.
+- No separately generated replacement logo is used.
+- Draggable orb is larger: 80px desktop, 68-70px mobile.
+- Assistant panel remains draggable and defaults to the lower-right, above the orb, on mobile and desktop.
+- New saved-position keys ensure old positions do not override the new lower-right defaults.
+- Home button remains in the top bar, immediately to the right of LIVE/status.
+- DG live data/relay logic is unchanged.

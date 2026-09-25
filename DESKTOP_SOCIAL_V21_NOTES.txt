@@ -1,0 +1,18 @@
+V21 desktop header refinement — 2026-09-22
+
+Based on V20/V19.
+
+Desktop only (>700px):
+- Moves the Threads + LINE square cells slightly to the right / closer to LIVE.
+- Adds a full-height black/gold vertical divider before the LIVE / connected status area.
+- Keeps both social cells square and aligned to the header top/bottom grid.
+
+Mobile (<=700px):
+- Intentionally unchanged from V20, per user request.
+
+Unchanged:
+- DG live table synchronization.
+- V19 mobile performance tuning.
+- Floating assistant, free drag and 50%-100% scaling.
+- Calculator launcher/panel.
+- Existing Threads and LINE URLs.

@@ -1,0 +1,9 @@
+V17 Floating Tools
+- DG main assistant panel can scale from 100% down to 50%.
+- Bottom-right scale control: click steps 100 -> 90 -> ... -> 50 -> 100; drag diagonally for 5% increments.
+- Main panel scale is remembered separately for mobile and desktop.
+- Added black/gold "算牌" launcher in DG assistant header.
+- Calculator opens as a separate draggable floating tool; it can be closed and scaled 50-100% independently.
+- Calculator position and scale are remembered. Mobile and desktop scale values are stored separately.
+- Calculator currently shows the live room / SHOE / round context only. Calculation logic is intentionally left as a placeholder until the user supplies the rules.
+- Existing DG live table sync and report-sync code are not intentionally changed by this UI feature.

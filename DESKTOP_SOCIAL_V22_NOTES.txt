@@ -1,0 +1,9 @@
+V22 desktop header spacing adjustment
+- Desktop only (min-width 701px).
+- Removed the large empty area between Threads/LINE and LIVE.
+- LIVE / connected status cell is now a compact 104px block.
+- Threads and LINE remain square, full-height header cells.
+- Existing black/gold full-height divider between LINE and LIVE remains.
+- Kept a small 9px gap between LIVE status and the Home button.
+- Mobile layout is intentionally unchanged.
+- No DG live-data, floating assistant, calculator, resize, or server logic changed.

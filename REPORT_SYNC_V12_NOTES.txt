@@ -1,0 +1,8 @@
+DG神手 V12 報表同步修正
+- 修正 V11 注入到 DG 頁面的報表腳本其實沒有執行的根因。
+- 改用 String.raw 保留 injected script 內 regex 的反斜線，避免 WebSocket/文字解析 regex 在瀏覽器變成無效語法。
+- 移除同一作用域重複宣告 const __sleep 的 JavaScript SyntaxError。
+- 背景監看改為掃描主頁 + 同源內層 iframe。
+- 一鍵刷新仍會掃描報表與分頁，再送回後端並強制更新小計/總計。
+- 小計 = 今日目前選擇房間所有已結算輸贏累加。
+- 總計 = DG 今日整個帳號總盈虧。

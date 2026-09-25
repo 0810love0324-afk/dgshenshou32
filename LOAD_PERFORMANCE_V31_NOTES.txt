@@ -1,0 +1,13 @@
+DG loading performance V31 - 2026-09-25
+
+Base: V30 live-road recommendation + V29 pair 25/7.
+
+Performance-only changes (recommendation logic unchanged):
+- DG proxy no longer clones/decodes every static game response for report detection.
+- Injected fetch/XHR hooks inspect only report-like requests instead of all game resources.
+- Text/JS/CSS/JSON/SVG/WASM proxy responses are streamed with fast gzip when supported.
+- Static assets receive a short browser cache fallback when the upstream provides no cache policy.
+- Existing manual P/L refresh path remains intact.
+- Live road SSE, pair logic, recommendation rules, drag/scale UI, and mobile/desktop behavior are unchanged.
+
+Goal: reduce initial DG loading time and main-thread/network overhead, especially on mobile and Render Free.

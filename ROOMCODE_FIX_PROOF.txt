@@ -1,0 +1,25 @@
+DG 懸浮即時資料房號修正｜2026-09-19
+
+從使用者提供的真實 DG HAR 已確認：
+60101 -> fms=BAC001, tableName=RB01
+60102 -> fms=BAC002, tableName=RB02
+60103 -> fms=BAC003, tableName=RB03
+60104 -> fms=BAC004, tableName=RB04
+60105 -> fms=BAC005, tableName=RB05
+50101 -> fms=TID348, tableName=S01
+50102 -> fms=TID349, tableName=S02
+50103 -> fms=TID350, tableName=S03
+50104 -> fms=TID351, tableName=S05
+50105 -> fms=TID352, tableName=S06
+50106 -> fms=TID354, tableName=S07
+50107 -> fms=TID77842, tableName=S09
+50108 -> fms=TID77846, tableName=S10
+
+上一版 server/dg-relay.ts 使用 fms 當 apiId，前端卻用 RB01/S01 查表，
+因此即使 SSE 收到資料，懸浮 UI 仍會顯示 -- 與 0。
+
+本版後端改用 tableName / tableId 正規化房號，前端也增加 roomId/tableName fallback。
+未增加第二次 DGLI/login。
+
+Render Health 驗證：
+/api/health 的 mode 應為 one-dgli-one-vendor-websocket-roomcode-fix

@@ -1,0 +1,10 @@
+V20 header social links
+
+- Based on V19 mobile-performance build.
+- Adds clickable Threads and LINE links to the DG top header.
+- Threads: https://threads.com/@luyu.8868_?igshid=NTc4MTIwNjQ2YQ==
+- LINE: https://line.me/ti/p/htW38wjS4w
+- Both controls are square cells aligned exactly to the top/bottom header grid height.
+- Desktop: 64x64 px cells.
+- Mobile <=700px: 58x58 px cells matching the 58px mobile header.
+- Existing DG live sync, floating assistant, calculator panel, dragging/scaling, and V19 performance logic are unchanged.

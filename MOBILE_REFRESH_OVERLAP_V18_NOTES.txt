@@ -1,0 +1,14 @@
+V18 mobile scaled assistant refresh-button layout fix
+Date: 2026-09-22
+
+Problem:
+- On mobile, after scaling DG 懸浮輔助 down (for example 50%), the sticky
+  「一鍵刷新 目前總盈虧」area could float over / cover the lower function cards.
+
+Fix:
+- Mobile only (<=700px): report-actions no longer uses sticky positioning.
+- Refresh status/button now stays in normal content flow.
+- Visual order is kept as:
+  即時資料 -> 莊/閒/和 -> 小計/總計 -> 報表狀態 + 一鍵刷新 -> 縮放控制區
+- Existing 50%-100% panel scaling, free drag, calculator launcher, live table
+  logic and server code are unchanged.

@@ -1,0 +1,14 @@
+V19 mobile performance optimization
+
+- Keeps V18 UI, free drag, 50%-100% scaling, calculator panel, and DG live table relay.
+- Removes continuous 1.2s full DOM/Laya report scans and MutationObserver rescans from the DG game page.
+- Heavy report scanning now runs only when the user presses the report refresh button.
+- Removes duplicate browser-side WebSocket report inspection; server relay remains the single live table/report transport observer.
+- Automatic report status polling is now lightweight snapshot-only, 6 seconds, and only while the assistant panel is open.
+- Non-force /api/dg/report no longer replays/fetches report data on every background poll.
+- Reduces passive fetch/XHR report posts using report-specific hints.
+- Heartbeat timestamp moved to ref to avoid unnecessary React renders.
+- Resize handler no longer re-registers during every drag movement.
+- Position/scale localStorage writes are debounced to reduce mobile main-thread stalls.
+
+Goal: improve mobile DG loading/opening/dragging responsiveness without touching the stable V4 table live-data logic.

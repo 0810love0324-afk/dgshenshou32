@@ -1,0 +1,15 @@
+DG 神手 V14 報表同步修正
+
+- 報表資料來源新增 DG 既有共用 WebSocket transport 解析，不再只依賴 DOM/iframe。
+- 解析 PublicBean object/list 與 protobuf length-delimited 文字/JSON payload。
+- 報表列可從純文字資料解析：遊戲編號、房間、結算時間、輸贏。
+- 今日總計可從「總計 ... 最後一個數字」解析，避免誤拿下注金額/有效下注額。
+- 小計 = 懸浮面板目前所選房間今日已結算輸贏累加。
+- 總計 = DG 今日帳號總盈虧。
+- 在玩家開啟報表時會記住實際 DG WebSocket 報表請求；一鍵刷新會重送該真實請求，再更新小計/總計。
+- 保留原 v4 桌況即時同步、自由拖曳、點小球開關面板。
+
+內部驗證：
+1) 使用使用者截圖中的 12 筆 RB02 輸贏資料測試，小計 = -250.00、總計 = -7.50。
+2) 使用既有 DG HAR 的 333 個正常 WebSocket 接收封包回放，未誤判成報表資料。
+3) TS/TSX syntax transpile diagnostics 全部通過。

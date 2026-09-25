@@ -1,0 +1,13 @@
+DG神手 V15 - 玩家工作階段獨立報表同步
+
+核心定義：
+- 每位玩家以自己的 dg_assist sessionId / DG relay / proxy session 獨立同步，不共用其他玩家資料。
+- 小計：目前懸浮面板所選房間，該玩家「今天」所有已結算遊戲報表輸贏累加。
+- 總計：該玩家 DG 今日遊戲報表的當日總盈虧。
+
+V15 修正：
+1. 擴大 DG proxy 監聽，不再只接受 application/json；text/html、text/plain、octet-stream 等可解碼回應都會由該玩家 session 的報表解析器檢查。
+2. Browser fetch/XHR 攔截支援 raw text、ArrayBuffer、Blob，不再因不是 JSON 而丟掉報表回應。
+3. 加入 loose-text / HTML 報表解析，可從整份報表回應解析多筆「房間、結算時間、輸贏」與「總計」。
+4. DG 可能使用未列出的同源 report endpoint；V15 對來自 DG iframe 的同源請求加入 session-bound catch-all proxy，不影響 /api、/assets。
+5. 已鎖定 WebSocket 報表請求後，懸浮面板的 3 秒輪詢會重送該玩家自己的報表刷新 frame；手動一鍵刷新使用 force 模式。

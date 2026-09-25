@@ -1,0 +1,18 @@
+DG game road sync latency fix V32 - 2026-09-25
+
+Base: V31 loading optimized + V30 live-road recommendation + V29 pair 25/7.
+
+Problem observed:
+- Floating assistant already showed the newest live result/counts.
+- The actual DG baccarat bead plate / road UI could remain one result behind briefly.
+
+Changes:
+1. Vendor WebSocket packets are now forwarded to the foreground DG game sockets BEFORE assistant protobuf decoding/SSE/report processing.
+2. TCP_NODELAY is enabled on the upstream DG TLS/WebSocket socket.
+3. TCP_NODELAY is enabled on the browser-facing /api/dg/game-ws socket.
+4. The game and assistant still share exactly one upstream DG WebSocket/session; no second login or polling path was added.
+5. Recommendation, pair 25%/7%, report sync, mobile/desktop UI and V31 loading optimizations are unchanged.
+
+Expected result:
+- When DG pushes a new road result, the vendor page receives the raw frame immediately instead of waiting behind assistant-side decoding.
+- The DG bead plate and floating panel should visually converge faster, especially when the Render instance is under CPU load.

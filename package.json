@@ -1,0 +1,32 @@
+{
+  "name": "dg-shenshou-tsx",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:web": "vite --host 0.0.0.0 --port 8081",
+    "dev:server": "tsx watch server/index.ts",
+    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outfile=dist-server/index.js",
+    "start": "node server.js",
+    "check": "tsc --noEmit",
+    "postinstall": "npm run build"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "concurrently": "latest",
+    "esbuild": "latest",
+    "express": "latest",
+    "tsx": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/express": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest"
+  }
+}

@@ -1,0 +1,11 @@
+2026-09-19 Full logo / UI alignment fix
+
+This package updates the DG神手 UI with:
+1. Full DG神手 wording rendered in UI (not relying on the old cropped image text).
+2. Header logo vertical centering for login page and in-game top bar.
+3. Auth / launch page large logo spacing adjusted to avoid overlap.
+4. Mobile login sizing adjusted.
+5. Decorative bottom chip circles removed.
+6. DG floating orb can be dragged with mouse/touch; click still toggles panel.
+7. DG floating assistance panel can be dragged by its title bar; position is remembered locally.
+8. "回主頁" moved into the in-game top bar, immediately to the right of LIVE/status.

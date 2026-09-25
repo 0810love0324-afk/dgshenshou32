@@ -1,0 +1,10 @@
+V16 - per-player report sync + mobile panel
+
+- Keeps each player's report state isolated by assist sessionId.
+- Adds Laya stage report extraction for DG's canvas/Laya-rendered report UI (not only HTML DOM).
+- Parses DG report rows from Laya text nodes into id / room / settlement time / win-loss.
+- Today total reads the DG report's total win-loss value.
+- Current-room subtotal is calculated by summing today's settled rows for the selected room.
+- When report data is accepted, the relay captures that player's recent report WebSocket request frames and can replay them on automatic/manual refresh.
+- Mobile assistant panel has a bounded viewport height and internal scrolling; the black-gold refresh button stays visible at the bottom.
+- Floating orb and panel remain free-draggable and positions use new v16 storage keys.
