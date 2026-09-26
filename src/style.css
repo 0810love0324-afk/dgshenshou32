@@ -652,7 +652,7 @@ aside.calc-panel:before{content:"";position:absolute;left:14px;top:-1px;width:64
 }
 aside.pair-panel{width:344px}
 aside.pair-panel:before{width:78px}
-.pair-sync-row{display:grid;grid-template-columns:.8fr .9fr 1.35fr;gap:7px;margin-bottom:9px}
+.pair-sync-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:9px;align-items:stretch}
 .pair-room-select{height:38px;margin:0 0 9px;font-size:11px;font-weight:800;letter-spacing:.04em}
 .pair-count-summary{display:flex;align-items:center;justify-content:space-between;margin:0 0 8px;padding:8px 10px;border:1px solid rgba(231,188,80,.12);border-radius:7px;background:linear-gradient(180deg,#10171b,#0a0f12);color:#8e999f;font-size:9.5px;letter-spacing:.04em}
 .pair-count-summary strong{color:#e7c568;font-size:13px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
@@ -661,8 +661,15 @@ aside.pair-panel:before{width:78px}
 .pair-prob-title em{font-style:normal;font-size:10px;font-weight:900;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
 .pair-prob.player .pair-prob-title em{color:#82b6ff}
 .pair-prob.banker .pair-prob-title em{color:#ff8989}
-.pair-sync-row span{min-height:51px;padding:7px 8px;border:1px solid rgba(231,188,80,.10);border-radius:7px;background:#0d1418;color:#85939a;font-size:9px;display:flex;flex-direction:column;justify-content:center;gap:5px}
+.pair-sync-row span{min-height:56px;padding:9px 11px;border:1px solid rgba(231,188,80,.11);border-radius:8px;background:linear-gradient(180deg,#10171b,#0b1115);color:#85939a;font-size:9px;display:flex;flex-direction:column;justify-content:center;gap:6px;box-shadow:inset 0 1px rgba(255,255,255,.018)}
 .pair-sync-row strong{color:#f0eee8;font-size:13px;line-height:1.15;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;white-space:nowrap}
+.pair-next-cell{flex-direction:row!important;align-items:center;justify-content:space-between;gap:10px}
+.pair-next-cell strong{font-size:14px;letter-spacing:.015em;flex:1;min-width:0}
+.pair-signal{display:inline-flex!important;flex:0 0 auto!important;min-height:auto!important;padding:4px 7px!important;border:1px solid rgba(231,188,80,.10)!important;border-radius:999px!important;background:rgba(2,6,8,.38)!important;align-items:center!important;justify-content:center!important;flex-direction:row!important;gap:5px!important;font-size:9.5px!important;font-weight:900;letter-spacing:.05em;color:#a0a9ad!important;white-space:nowrap;box-shadow:none!important}
+.pair-signal b{font-size:12px;line-height:1;display:inline-block;transform:translateY(-.2px)}
+.pair-signal.on{border-color:rgba(74,224,144,.18)!important}
+.pair-signal.off{border-color:rgba(255,103,112,.18)!important}
+
 .pair-prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .pair-prob{min-height:76px;padding:10px 11px;border-radius:9px;background:linear-gradient(180deg,#10181d,#0a1115);border:1px solid rgba(231,188,80,.12);display:flex;flex-direction:column;justify-content:center}
 .pair-prob>span{font-size:10px;color:#89969c;letter-spacing:.06em}
@@ -680,7 +687,7 @@ aside.pair-panel:before{width:78px}
   .assist-head-actions{gap:5px}
   .hot-launch{height:25px;padding:0 7px;font-size:9.5px}
   aside.pair-panel{width:min(326px,calc(100vw - 18px));max-width:calc(100vw - 18px)}
-  .pair-sync-row{gap:6px}.pair-sync-row span{min-height:48px;padding:7px;font-size:8.5px}.pair-sync-row strong{font-size:12px}
+  .pair-sync-row{gap:6px}.pair-sync-row span{min-height:50px;padding:7px 8px;font-size:8.5px}.pair-sync-row strong{font-size:12px}.pair-next-cell{gap:6px}.pair-next-cell strong{font-size:12.5px}.pair-signal{padding:3px 6px!important;font-size:8.5px!important;gap:4px!important}.pair-signal b{font-size:11px}
   .pair-room-select{height:36px;margin-bottom:7px;font-size:10.5px}.pair-count-summary{padding:7px 8px;margin-bottom:7px;font-size:9px}.pair-count-summary strong{font-size:12px}
   .pair-prob{min-height:70px;padding:9px}.pair-prob>strong{font-size:25px}.pair-recommend{margin-top:7px;padding:8px 9px;font-size:9px}.pair-recommend strong{font-size:14px}  }
 @media(max-width:430px){

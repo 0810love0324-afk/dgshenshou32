@@ -132,6 +132,8 @@ function App(){
    return null;
  },[pairBeadReady,playerPairHot.probability,bankerPairHot.probability]);
  const pairValue=!pairBeadReady?'--':sharedPairProbability?`${sharedPairProbability}%`:'--';
+ const pairSignalOn=sharedPairProbability!=null;
+ const pairSignalLamp=pairSignalOn?'🟢':'🔴';
  const pairRecommendation=useMemo(()=>pairRecommendationForNext(pairBeadReady?pairBeads:[]),[pairBeadReady,pairBeads]);
  const pairRecommendationValue=!pairBeadReady?'--':(pairRecommendation.recommendation??'--');
  const tieRecommendation=useMemo(()=>tieRecommendationForNext(pairBeadReady?pairBeads:[]),[pairBeadReady,pairBeads]);
@@ -225,16 +227,16 @@ function App(){
     <button type="button" className="panel-scale-handle calc-scale-handle" aria-label="縮放算牌輔助" title="拖曳縮放，點一下逐級縮小" onPointerDown={e=>beginScale('calc',e)} onPointerMove={moveScale} onPointerUp={endScale} onPointerCancel={endScale} onClick={()=>{if(suppressScaleClickRef.current){suppressScaleClickRef.current=false;return}cycleScale('calc')}}><span>⇲</span><b>{Math.round(calcScale*100)}%</b></button>
    </aside>}
    {pairOpen&&<aside ref={pairRef} className="calc-panel pair-panel draggable-panel scalable-panel" style={{...(pairPos?{left:pairPos.x,top:pairPos.y,right:'auto',bottom:'auto'}:{}),transform:`scale(${pairScale})`,transformOrigin:pairPos?'top left':'bottom right'}}>
-    <div className="calc-head drag-handle" onPointerDown={e=>beginDrag('pair',e)} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag}><div><b>對子機率</b><small>{pairRoom} · 珠盤即時同步</small></div><button type="button" className="calc-close" onPointerDown={e=>e.stopPropagation()} onClick={e=>{e.stopPropagation();setPairOpen(false)}}>×</button></div>
+    <div className="calc-head drag-handle" onPointerDown={e=>beginDrag('pair',e)} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag}><div><b>對子概率</b><small>{pairRoom} · 珠盤即時同步</small></div><button type="button" className="calc-close" onPointerDown={e=>e.stopPropagation()} onClick={e=>{e.stopPropagation();setPairOpen(false)}}>×</button></div>
     <select className="pair-room-select" value={pairRoom} onChange={e=>setPairRoom(e.target.value)}>{rooms.map(x=><option key={x}>{x}</option>)}</select>
-    <div className="pair-sync-row"><span>牌靴<strong>{pairT?.shoe||'--'}</strong></span><span>珠盤<strong>{pairBeadReady?`${pairBeads.length} 顆`:'--'}</strong></span><span>下一格<strong>{pairBeadReady?`第${playerPairHot.nextCol+1}欄/${playerPairHot.nextRow+1}格`:'--'}</strong></span></div>
+    <div className="pair-sync-row"><span>珠盤<strong>{pairBeadReady?`${pairBeads.length} 顆`:'--'}</strong></span><span className="pair-next-cell"><strong>{pairBeadReady?`第${playerPairHot.nextCol+1}欄/${playerPairHot.nextRow+1}格`:'--'}</strong><small className={`pair-signal ${pairSignalOn?'on':'off'}`}>訊號 <b>{pairSignalLamp}</b></small></span></div>
     <div className="pair-count-summary"><span>本房對子總數</span><strong>{pairTotalCount==null?'--':`${pairTotalCount} 顆`}</strong></div>
     <div className="pair-prob-grid"><div className="pair-prob player"><div className="pair-prob-title"><span>閒對</span><em>{pairBeadReady?`${playerPairHot.pairCount} 顆`:'--'}</em></div><strong>{pairValue}</strong></div><div className="pair-prob banker"><div className="pair-prob-title"><span>莊對</span><em>{pairBeadReady?`${bankerPairHot.pairCount} 顆`:'--'}</em></div><strong>{pairValue}</strong></div></div>
     <div className={`pair-recommend ${pairRecommendationValue==='莊對'?'banker':pairRecommendationValue==='閒對'?'player':''}`}><span>推薦下注</span><strong>{pairRecommendationValue}</strong></div>
     <div className="hot-recommend-divider" aria-hidden="true"/>
-    <div className="tie-recommend-block"><div className="tie-recommend-label"><span>三合院推薦</span><em>{pairBeadReady&&tieRecommendation.consecutiveTies>=2?`連和 ${tieRecommendation.consecutiveTies} 局`:'等待連和'}</em></div><div className={`tie-recommend ${tieRecommendationValue==='和'?'active':''}`}><span>推薦下注</span><strong>{tieRecommendationValue}</strong></div></div>
+    <div className="tie-recommend-block"><div className="tie-recommend-label"><span>三和院概率</span><em>{pairBeadReady&&tieRecommendation.consecutiveTies>=2?`連和 ${tieRecommendation.consecutiveTies} 局`:'等待連和'}</em></div><div className={`tie-recommend ${tieRecommendationValue==='和'?'active':''}`}><span>推薦下注</span><strong>{tieRecommendationValue}</strong></div></div>
     <div className="calc-status"><i className={pairBeadReady&&live?'on':''}/>{pairBeadReady?(live?`${pairRoom} 珠盤、對子與和局即時更新`:`${pairRoom} 珠盤已解析，等待即時連線`):`等待 ${pairRoom} 完整珠盤資料`}</div>
-    <button type="button" className="panel-scale-handle calc-scale-handle" aria-label="縮放對子機率" title="拖曳縮放，點一下逐級縮小" onPointerDown={e=>beginScale('pair',e)} onPointerMove={moveScale} onPointerUp={endScale} onPointerCancel={endScale} onClick={()=>{if(suppressScaleClickRef.current){suppressScaleClickRef.current=false;return}cycleScale('pair')}}><span>⇲</span><b>{Math.round(pairScale*100)}%</b></button>
+    <button type="button" className="panel-scale-handle calc-scale-handle" aria-label="縮放對子概率" title="拖曳縮放，點一下逐級縮小" onPointerDown={e=>beginScale('pair',e)} onPointerMove={moveScale} onPointerUp={endScale} onPointerCancel={endScale} onClick={()=>{if(suppressScaleClickRef.current){suppressScaleClickRef.current=false;return}cycleScale('pair')}}><span>⇲</span><b>{Math.round(pairScale*100)}%</b></button>
    </aside>}
   </div>
  </div>
